@@ -4,14 +4,30 @@
  */
 package lesson1;
 
-/**
- *
- * @author tiennh
- */
+import javax.swing.table.DefaultTableModel;
+
 public class DemoJFrame extends javax.swing.JFrame {
 
     public DemoJFrame() {
         initComponents();
+        this.loadbTable();
+    }
+    
+    private void loadbTable()
+    {
+        DefaultTableModel dtm =
+            (DefaultTableModel) this.tblSV.getModel();
+        SinhVien sv1 = new SinhVien("PH1", "A");
+        SinhVien sv2 = new SinhVien("PH2", "B");
+        SinhVien sv3 = new SinhVien("PH3", "C");
+        
+        String[] rowData1 = {sv1.getMaSV(), sv1.getHoTen()};
+        String[] rowData2 = {sv2.getMaSV(), sv2.getHoTen()};
+        String[] rowData3 = {sv3.getMaSV(), sv3.getHoTen()};
+        
+        dtm.addRow(rowData1);
+        dtm.addRow(rowData2);
+        dtm.addRow(rowData3);
     }
 
     @SuppressWarnings("unchecked")
@@ -25,6 +41,9 @@ public class DemoJFrame extends javax.swing.JFrame {
         txtHoTen = new javax.swing.JTextField();
         btnDoc = new javax.swing.JButton();
         btnGhi = new javax.swing.JButton();
+        btnClear = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblSV = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -42,6 +61,18 @@ public class DemoJFrame extends javax.swing.JFrame {
         });
 
         btnGhi.setText("Ghi");
+        btnGhi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGhiActionPerformed(evt);
+            }
+        });
+
+        btnClear.setText("Làm mới");
+        btnClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClearActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -62,7 +93,8 @@ public class DemoJFrame extends javax.swing.JFrame {
                         .addComponent(btnDoc)
                         .addGap(18, 18, 18)
                         .addComponent(btnGhi)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnClear)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -77,9 +109,20 @@ public class DemoJFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDoc)
-                    .addComponent(btnGhi))
+                    .addComponent(btnGhi)
+                    .addComponent(btnClear))
                 .addContainerGap())
         );
+
+        tblSV.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Mã SV", "Họ Tên"
+            }
+        ));
+        jScrollPane1.setViewportView(tblSV);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -87,7 +130,9 @@ public class DemoJFrame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -95,16 +140,30 @@ public class DemoJFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(134, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDocActionPerformed
-        // TODO add your handling code here:
         System.out.println("BtnDoc: Click");
+        String maSV = this.txtMaSV.getText();
+        String hoTen = this.txtHoTen.getText();
+        System.out.println(maSV + "-" + hoTen);
     }//GEN-LAST:event_btnDocActionPerformed
+
+    private void btnGhiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGhiActionPerformed
+        this.txtMaSV.setText("PH12345");
+        this.txtHoTen.setText("Ng Van A");
+    }//GEN-LAST:event_btnGhiActionPerformed
+
+    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
+        this.txtMaSV.setText("");
+        this.txtHoTen.setText("");
+    }//GEN-LAST:event_btnClearActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -139,11 +198,14 @@ public class DemoJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnClear;
     private javax.swing.JButton btnDoc;
     private javax.swing.JButton btnGhi;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tblSV;
     private javax.swing.JTextField txtHoTen;
     private javax.swing.JTextField txtMaSV;
     // End of variables declaration//GEN-END:variables
