@@ -1,0 +1,6 @@
+1. Tạo ArrayList trong QLSinhVienJFrame.
+    Khởi tạo 5 đối tượng mặc định và hiển thị lên JTable.
+    Khi click 1 dòng trên JTable, hiển thị dữ liệu dòng đó lên form.
+
+2. Thực hiện btnLamMoi: Xóa trắng form.
+3. Thực hiện btnXoa: Xóa dòng được chọn trên JTable.
