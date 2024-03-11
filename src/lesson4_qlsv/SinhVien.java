@@ -1,4 +1,4 @@
-package btvn_lesson2;
+package lesson4_qlsv;
 
 public class SinhVien {
     private String ma;

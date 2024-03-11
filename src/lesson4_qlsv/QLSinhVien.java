@@ -1,4 +1,4 @@
-package btvn_lesson2;
+package lesson4_qlsv;
 
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
@@ -257,7 +257,7 @@ public class QLSinhVien extends javax.swing.JFrame {
         String gt = this.txtMaSV.getText();
         String cNganh = this.cbbCNganh.getSelectedItem().toString();
         SinhVien newSV = new SinhVien(ma, ten, gt, cNganh);
-        
+
         for (int i = 0; i < this.listSV.size(); i++) {
             SinhVien oldSV = this.listSV.get(i);
             if (oldSV.getMa().equals(newSV.getMa())) {
