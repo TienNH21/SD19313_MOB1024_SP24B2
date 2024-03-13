@@ -15,6 +15,7 @@ public class QLSinhVien extends javax.swing.JFrame {
         this.listSV.add(new SinhVien("PH4", "D", "Nam", "C#"));
 
         this.loadTable();
+        this.clearForm();
     }
     
     private void loadTable()
@@ -39,6 +40,7 @@ public class QLSinhVien extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -46,12 +48,13 @@ public class QLSinhVien extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         txtMaSV = new javax.swing.JTextField();
         txtHoTen = new javax.swing.JTextField();
-        txtGioiTinh = new javax.swing.JTextField();
         btnThem = new javax.swing.JButton();
         btnSua = new javax.swing.JButton();
         btnXoa = new javax.swing.JButton();
         btnLamMoi = new javax.swing.JButton();
         cbbCNganh = new javax.swing.JComboBox<>();
+        rdoNam = new javax.swing.JRadioButton();
+        rdoNu = new javax.swing.JRadioButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblSV = new javax.swing.JTable();
 
@@ -97,6 +100,12 @@ public class QLSinhVien extends javax.swing.JFrame {
 
         cbbCNganh.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Java", "C#", "XLDL", "UDPM" }));
 
+        buttonGroup1.add(rdoNam);
+        rdoNam.setText("Nam");
+
+        buttonGroup1.add(rdoNu);
+        rdoNu.setText("Nữ");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -115,15 +124,17 @@ public class QLSinhVien extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(txtHoTen, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtGioiTinh, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(rdoNam)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rdoNu))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addGap(18, 18, 18)
-                                .addComponent(cbbCNganh, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(cbbCNganh, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnThem)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -132,7 +143,7 @@ public class QLSinhVien extends javax.swing.JFrame {
                         .addComponent(btnXoa)
                         .addGap(18, 18, 18)
                         .addComponent(btnLamMoi)))
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -142,7 +153,8 @@ public class QLSinhVien extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(jLabel3)
                     .addComponent(txtMaSV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtGioiTinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(rdoNam)
+                    .addComponent(rdoNu))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -179,10 +191,10 @@ public class QLSinhVien extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -211,8 +223,13 @@ public class QLSinhVien extends javax.swing.JFrame {
         
         this.txtMaSV.setText(ma);
         this.txtHoTen.setText(ten);
-        this.txtGioiTinh.setText(gioiTinh);
         this.cbbCNganh.setSelectedItem(cNganh);
+        
+        if (gioiTinh.equals("Nam")) {
+            this.rdoNam.setSelected(true);
+        } else {
+            this.rdoNu.setSelected(true);
+        }
     }//GEN-LAST:event_tblSVMouseClicked
 
     private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
@@ -242,8 +259,23 @@ public class QLSinhVien extends javax.swing.JFrame {
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         String ma = this.txtMaSV.getText();
-        String ten = this.txtMaSV.getText();
-        String gt = this.txtMaSV.getText();
+        String ten = this.txtHoTen.getText();
+        // C1: 
+//        String gt = "";
+//        if (this.rdoNam.isSelected() == true) {
+//            gt = "Nam";
+//        } else {
+//            gt = "Nu";
+//        }
+
+        // C2: 
+//        String gt = "Nu";
+//        if (this.rdoNam.isSelected() == true) {
+//            gt = "Nam";
+//        }
+
+        // C3:
+        String gt = this.rdoNam.isSelected() == true ? "Nam" : "Nu";
         String cNganh = this.cbbCNganh.getSelectedItem().toString();
         SinhVien sv = new SinhVien(ma, ten, gt, cNganh);
         this.listSV.add(sv);
@@ -253,8 +285,8 @@ public class QLSinhVien extends javax.swing.JFrame {
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         String ma = this.txtMaSV.getText();
-        String ten = this.txtMaSV.getText();
-        String gt = this.txtMaSV.getText();
+        String ten = this.txtHoTen.getText();
+        String gt = this.rdoNam.isSelected() == true ? "Nam" : "Nu";
         String cNganh = this.cbbCNganh.getSelectedItem().toString();
         SinhVien newSV = new SinhVien(ma, ten, gt, cNganh);
 
@@ -264,13 +296,16 @@ public class QLSinhVien extends javax.swing.JFrame {
                 this.listSV.set(i, newSV);
             }
         }
+        
+        this.loadTable();
+        this.clearForm();
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void clearForm()
     {
         this.txtMaSV.setText("");
         this.txtHoTen.setText("");
-        this.txtGioiTinh.setText("");
+        this.rdoNam.setSelected(true);
         this.cbbCNganh.setSelectedIndex(0);
     }
     
@@ -311,6 +346,7 @@ public class QLSinhVien extends javax.swing.JFrame {
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnXoa;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cbbCNganh;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -318,8 +354,9 @@ public class QLSinhVien extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JRadioButton rdoNam;
+    private javax.swing.JRadioButton rdoNu;
     private javax.swing.JTable tblSV;
-    private javax.swing.JTextField txtGioiTinh;
     private javax.swing.JTextField txtHoTen;
     private javax.swing.JTextField txtMaSV;
     // End of variables declaration//GEN-END:variables
