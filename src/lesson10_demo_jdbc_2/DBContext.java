@@ -1,3 +1,5 @@
+package lesson10_demo_jdbc_2;
+
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
